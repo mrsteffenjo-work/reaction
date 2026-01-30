@@ -118,7 +118,7 @@ export function generateFunStats(players: Player[]): FunStat[] {
     // Add fun stats
     if (bestConsistency.score > 70) {
         stats.push({
-            title: '🎯 Steady Hands',
+            title: 'Steady Hands',
             playerName: bestConsistency.player.name,
             value: `${bestConsistency.score}% consistency`,
             icon: '🎯',
@@ -127,7 +127,7 @@ export function generateFunStats(players: Player[]): FunStat[] {
 
     if (mostImproved.improvement > 10) {
         stats.push({
-            title: '📈 Most Improved',
+            title: 'Most Improved',
             playerName: mostImproved.player.name,
             value: `${mostImproved.improvement}% faster`,
             icon: '📈',
@@ -136,7 +136,7 @@ export function generateFunStats(players: Player[]): FunStat[] {
 
     if (quickestReflexes.fastest < Infinity) {
         stats.push({
-            title: '⚡ Lightning Reflexes',
+            title: 'Lightning Reflexes',
             playerName: quickestReflexes.player.name,
             value: `${quickestReflexes.fastest}ms`,
             icon: '⚡',
@@ -145,7 +145,7 @@ export function generateFunStats(players: Player[]): FunStat[] {
 
     if (mostTimeouts.count > 0) {
         stats.push({
-            title: '😴 Sleepy Head',
+            title: 'Sleepy Head',
             playerName: mostTimeouts.player.name,
             value: `${mostTimeouts.count} timeouts`,
             icon: '😴',
@@ -154,7 +154,7 @@ export function generateFunStats(players: Player[]): FunStat[] {
 
     if (slowestReaction.slowest > 500) {
         stats.push({
-            title: '🐢 Slow & Steady',
+            title: 'Slow & Steady',
             playerName: slowestReaction.player.name,
             value: `${slowestReaction.slowest}ms`,
             icon: '🐢',
