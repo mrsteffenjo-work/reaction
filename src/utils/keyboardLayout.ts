@@ -19,7 +19,8 @@ const KEY_DISPLAY_NAMES: Record<string, string> = {
 };
 
 export function getKeysForPlayerCount(count: number): string[] {
-    if (count < 2) return ['F'];
+    if (count < 1) return ['F'];
+    if (count === 1) return ['F'];
     if (count > 8) count = 8;
     return KEY_LAYOUTS[count] || KEY_LAYOUTS[8].slice(0, count);
 }
@@ -44,16 +45,14 @@ export function getPlayerColor(index: number): string {
     return PLAYER_COLORS[index % PLAYER_COLORS.length];
 }
 
-// Generate random position within canvas bounds
+// Generate random position within canvas bounds (using percentages 0-100)
 export function generateBubblePosition(
     index: number,
-    totalPlayers: number,
-    canvasWidth: number,
-    canvasHeight: number
+    totalPlayers: number
 ): { x: number; y: number } {
-    const padding = 120;
-    const usableWidth = canvasWidth - padding * 2;
-    const usableHeight = canvasHeight - padding * 2;
+    const padding = 15; // padding in percentage
+    const usableWidth = 100 - padding * 2;
+    const usableHeight = 100 - padding * 2;
 
     // Distribute players in a nice pattern
     const cols = Math.ceil(Math.sqrt(totalPlayers));

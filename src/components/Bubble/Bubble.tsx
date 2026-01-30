@@ -16,8 +16,8 @@ export function Bubble({ player, showKey = true }: BubbleProps) {
         <motion.div
             className={`bubble ${isActive ? 'bubble--active' : ''}`}
             style={{
-                left: bubblePosition.x,
-                top: bubblePosition.y,
+                left: `${bubblePosition.x}%`,
+                top: `${bubblePosition.y}%`,
                 '--bubble-color': color,
                 '--bubble-glow': color,
             } as React.CSSProperties}

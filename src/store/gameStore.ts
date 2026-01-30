@@ -18,8 +18,7 @@ const DEFAULT_SETTINGS: GameSettings = {
     reactionWindow: 2000,
 };
 
-const CANVAS_WIDTH = 900;
-const CANVAS_HEIGHT = 500;
+
 
 function generateId(): string {
     return Math.random().toString(36).substring(2, 9);
@@ -37,7 +36,7 @@ function reassignKeys(players: Player[]): Player[] {
 function repositionBubbles(players: Player[]): Player[] {
     return players.map((player, index) => ({
         ...player,
-        bubblePosition: generateBubblePosition(index, players.length, CANVAS_WIDTH, CANVAS_HEIGHT),
+        bubblePosition: generateBubblePosition(index, players.length),
         bubbleVelocity: generateBubbleVelocity(),
     }));
 }
@@ -101,7 +100,7 @@ export const useGameStore = create<GameState>((set, get) => ({
     startGame: () => {
         set((state) => ({
             phase: 'playing',
-            currentRound: 1,
+            currentRound: state.phase === 'roundEnd' ? state.currentRound : 1,
             currentFlash: 0,
             players: state.players.map((p) => ({
                 ...p,
@@ -109,7 +108,7 @@ export const useGameStore = create<GameState>((set, get) => ({
                 isActive: false,
                 hasResponded: false,
             })),
-            roundStats: [],
+            roundStats: state.phase === 'roundEnd' ? state.roundStats : [],
         }));
     },
 
@@ -228,8 +227,8 @@ export const useGameStore = create<GameState>((set, get) => ({
 
     updateBubblePositions: () => {
         set((state) => {
-            const padding = 80;
-            const bubbleSize = 100;
+            const padding = 5; // 5% padding
+            const bubbleSize = 10; // Approx 10% bubble size
 
             return {
                 players: state.players.map((p) => {
@@ -240,14 +239,14 @@ export const useGameStore = create<GameState>((set, get) => ({
                     x += vx;
                     y += vy;
 
-                    // Bounce off walls
-                    if (x < padding || x > CANVAS_WIDTH - padding - bubbleSize) {
+                    // Bounce off walls (using percentages 0-100)
+                    if (x < padding || x > 100 - padding - bubbleSize) {
                         vx = -vx;
-                        x = Math.max(padding, Math.min(CANVAS_WIDTH - padding - bubbleSize, x));
+                        x = Math.max(padding, Math.min(100 - padding - bubbleSize, x));
                     }
-                    if (y < padding || y > CANVAS_HEIGHT - padding - bubbleSize) {
+                    if (y < padding || y > 100 - padding - bubbleSize) {
                         vy = -vy;
-                        y = Math.max(padding, Math.min(CANVAS_HEIGHT - padding - bubbleSize, y));
+                        y = Math.max(padding, Math.min(100 - padding - bubbleSize, y));
                     }
 
                     return {

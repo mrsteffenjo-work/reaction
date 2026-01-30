@@ -43,19 +43,25 @@ export function useGameLoop() {
 
     // Schedule next flash
     const scheduleNextFlash = useCallback(() => {
-        if (phase !== 'playing' || players.length === 0) return;
+        const currentState = useGameStore.getState();
+        const { phase: currentPhase, players: currentPlayers, settings: currentSettings } = currentState;
+
+        if (currentPhase !== 'playing' || currentPlayers.length === 0) return;
 
         const delay =
-            settings.minFlashDelay +
-            Math.random() * (settings.maxFlashDelay - settings.minFlashDelay);
+            currentSettings.minFlashDelay +
+            Math.random() * (currentSettings.maxFlashDelay - currentSettings.minFlashDelay);
 
         timeoutRef.current = window.setTimeout(() => {
-            // Pick random player
-            const randomIndex = Math.floor(Math.random() * players.length);
-            const randomPlayer = players[randomIndex];
+            // Get fresh state for player selection
+            const freshState = useGameStore.getState();
+            if (freshState.phase !== 'playing' || freshState.players.length === 0) return;
+
+            const randomIndex = Math.floor(Math.random() * freshState.players.length);
+            const randomPlayer = freshState.players[randomIndex];
             triggerFlash(randomPlayer.id);
         }, delay);
-    }, [phase, players, settings, triggerFlash]);
+    }, [triggerFlash]);
 
     // Handle countdown phase
     useEffect(() => {
