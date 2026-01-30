@@ -1,0 +1,241 @@
+.results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.results__winner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 2rem 3rem;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+    border-radius: 24px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    text-align: center;
+}
+
+.results__trophy {
+    font-size: 4rem;
+    animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.results__winner-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffd700;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.results__winner-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0.25rem 0;
+}
+
+.results__winner-time {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+}
+
+.results__leaderboard,
+.results__fun-stats {
+    width: 100%;
+}
+
+.results__section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+.results__rankings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.results__player {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    border-left: 4px solid var(--player-color);
+}
+
+.results__player--winner {
+    background: rgba(255, 215, 0, 0.08);
+    border-color: #ffd700;
+}
+
+.results__player-rank {
+    min-width: 50px;
+    text-align: center;
+}
+
+.results__medal {
+    font-size: 1.75rem;
+}
+
+.results__rank-number {
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.results__player-color {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.results__player-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.results__player-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+.results__player-stats {
+    display: flex;
+    gap: 1.25rem;
+}
+
+.results__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.results__stat-label {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.results__stat-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.results__stat-value--best {
+    color: #38ef7d;
+}
+
+.results__stat-value--worst {
+    color: #ff6b6b;
+}
+
+.results__player-trend {
+    min-width: 80px;
+    text-align: right;
+}
+
+.results__trend {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.results__trend--up {
+    color: #38ef7d;
+}
+
+.results__trend--down {
+    color: #ff6b6b;
+}
+
+.results__trend--steady {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.results__awards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.results__award {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.results__award-icon {
+    font-size: 2rem;
+}
+
+.results__award-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.results__award-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.results__award-player {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.results__award-value {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.results__play-again {
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border: none;
+    border-radius: 16px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+    transition: box-shadow 0.3s;
+}
+
+.results__play-again:hover {
+    box-shadow: 0 12px 40px rgba(102, 126, 234, 0.5);
+}

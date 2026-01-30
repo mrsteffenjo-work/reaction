@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# ⚡ Reaction Arena
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multiplayer reaction time game built with React, TypeScript, and Vite.
 
-Currently, two official plugins are available:
+## 🚀 Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+# Install dependencies
+pnpm install
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Start development server
+pnpm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Open **http://localhost:5173** in your browser.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🎮 How to Play
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Add Players** - Enter names in the lobby (2-8 players)
+2. **Configure Settings** - Adjust rounds, flashes, and reaction window
+3. **Start Game** - Click "Start Game" when ready
+4. **React!** - Press your assigned key when your bubble lights up
+5. **View Results** - See winner, rankings, and fun stats
+
+### ⌨️ Keyboard Assignments
+
+Keys are automatically assigned for optimal spacing:
+
+| Players | Keys |
+|---------|------|
+| 2 | F, J |
+| 3 | D, G, K |
+| 4 | A, F, J, ; |
+| 5 | A, D, G, J, ; |
+| 6+ | Spread across home row |
+
+## ✨ Features
+
+- **Multiplayer Support** - 2-8 players on same keyboard
+- **Animated Bubbles** - Floating bubbles with glow effects
+- **Arched Names** - Player names arc below bubbles
+- **Configurable Game** - Rounds, flashes per round, reaction window
+- **Live Statistics** - Real-time rankings during gameplay
+- **Fun Awards** - Achievements like "Lightning Reflexes", "Most Improved", etc.
+
+## 🛠️ Tech Stack
+
+- React 19
+- TypeScript
+- Vite
+- Zustand (state management)
+- Framer Motion (animations)
+
+## 📁 Project Structure
+
+```
+src/
+├── components/       # UI components
+├── hooks/            # Game loop & keyboard input
+├── store/            # Zustand state management
+├── types/            # TypeScript interfaces
+├── utils/            # Statistics & keyboard layout
+└── App.tsx           # Main component
 ```
