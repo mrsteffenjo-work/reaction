@@ -17,7 +17,7 @@ export function Lobby() {
         }
     };
 
-    const canStart = players.length >= 2;
+    const canStart = players.length >= 1;
 
     return (
         <div className="lobby">
@@ -77,7 +77,7 @@ export function Lobby() {
                     </AnimatePresence>
 
                     {players.length === 0 && (
-                        <p className="lobby__empty">Add at least 2 players to start</p>
+                        <p className="lobby__empty">Add at least 1 player to start</p>
                     )}
                 </div>
             </div>
@@ -145,6 +145,53 @@ export function Lobby() {
                             </button>
                         </div>
                     </label>
+
+                    <label className="lobby__setting">
+                        <span className="lobby__setting-label">Min Flash Delay</span>
+                        <div className="lobby__setting-control">
+                            <button
+                                className="lobby__setting-btn"
+                                onClick={() => {
+                                    const newMin = Math.max(500, settings.minFlashDelay - 500);
+                                    updateSettings({ minFlashDelay: newMin });
+                                }}
+                            >
+                                −
+                            </button>
+                            <span className="lobby__setting-value">{settings.minFlashDelay / 1000}s</span>
+                            <button
+                                className="lobby__setting-btn"
+                                onClick={() => {
+                                    const newMin = Math.min(settings.maxFlashDelay - 500, settings.minFlashDelay + 500);
+                                    updateSettings({ minFlashDelay: newMin });
+                                }}
+                            >
+                                +
+                            </button>
+                        </div>
+                    </label>
+
+                    <label className="lobby__setting">
+                        <span className="lobby__setting-label">Max Flash Delay</span>
+                        <div className="lobby__setting-control">
+                            <button
+                                className="lobby__setting-btn"
+                                onClick={() => {
+                                    const newMax = Math.max(settings.minFlashDelay + 500, settings.maxFlashDelay - 500);
+                                    updateSettings({ maxFlashDelay: newMax });
+                                }}
+                            >
+                                −
+                            </button>
+                            <span className="lobby__setting-value">{settings.maxFlashDelay / 1000}s</span>
+                            <button
+                                className="lobby__setting-btn"
+                                onClick={() => updateSettings({ maxFlashDelay: Math.min(10000, settings.maxFlashDelay + 500) })}
+                            >
+                                +
+                            </button>
+                        </div>
+                    </label>
                 </div>
             </div>
 
@@ -153,7 +200,7 @@ export function Lobby() {
                 onClick={startCountdown}
                 disabled={!canStart}
             >
-                {canStart ? '🚀 Start Game' : `Need ${2 - players.length} more player${2 - players.length > 1 ? 's' : ''}`}
+                {canStart ? '🚀 Start Game' : 'Add a player to start'}
             </button>
         </div>
     );
