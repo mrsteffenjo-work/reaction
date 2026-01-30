@@ -47,7 +47,7 @@ export function Bubble({ player, showKey = true }: BubbleProps) {
                 <defs>
                     <path
                         id={`arc-${player.id}`}
-                        d="M 10,35 Q 60,10 110,35"
+                        d="M 10,10 Q 60,35 110,10"
                         fill="none"
                     />
                 </defs>

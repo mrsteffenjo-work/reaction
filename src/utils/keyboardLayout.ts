@@ -76,7 +76,7 @@ export function generateBubblePosition(
 
 // Generate random velocity for floating animation
 export function generateBubbleVelocity(): { vx: number; vy: number } {
-    const speed = 0.3 + Math.random() * 0.3;
+    const speed = 0.1 + Math.random() * 0.1;
     const angle = Math.random() * Math.PI * 2;
     return {
         vx: Math.cos(angle) * speed,
