@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import './LiveStats.css';
 
 export function LiveStats() {
-    const { players, currentRound, currentFlash, settings, phase } = useGameStore();
+    const { players, currentRound, currentFlash, settings } = useGameStore();
 
     const totalFlashes = settings.flashesPerRound * settings.numberOfRounds;
     const completedFlashes = (currentRound - 1) * settings.flashesPerRound + currentFlash;

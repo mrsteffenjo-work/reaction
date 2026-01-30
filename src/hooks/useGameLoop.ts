@@ -6,7 +6,6 @@ import { useGameStore } from '../store/gameStore';
 export function useGameLoop() {
     const {
         phase,
-        players,
         settings,
         currentRound,
         currentFlash,

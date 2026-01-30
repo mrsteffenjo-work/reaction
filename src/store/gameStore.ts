@@ -41,7 +41,7 @@ function repositionBubbles(players: Player[]): Player[] {
     }));
 }
 
-export const useGameStore = create<GameState>((set, get) => ({
+export const useGameStore = create<GameState>((set) => ({
     // Initial state
     players: [],
     settings: DEFAULT_SETTINGS,

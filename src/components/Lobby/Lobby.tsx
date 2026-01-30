@@ -49,7 +49,7 @@ export function Lobby() {
 
                 <div className="lobby__players">
                     <AnimatePresence mode="popLayout">
-                        {players.map((player, index) => (
+                        {players.map((player) => (
                             <motion.div
                                 key={player.id}
                                 className="lobby__player"
