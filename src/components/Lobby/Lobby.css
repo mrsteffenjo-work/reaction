@@ -46,6 +46,8 @@
 
 .lobby__input {
     flex: 1;
+    min-width: 0;
+    /* Allow input to shrink below default size */
     padding: 0.75rem 1rem;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -75,6 +77,8 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.2s;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .lobby__add-btn:hover:not(:disabled) {
